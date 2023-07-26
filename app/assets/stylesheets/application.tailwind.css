@@ -2,12 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+/* Radio inputs colors */
+.radio-red { @apply text-red-600 focus:ring-red-600; }
+.radio-green { @apply text-green-600 focus:ring-green-600; }
+.radio-yellow { @apply text-yellow-600 focus:ring-yellow-600; }
+.radio-blue { @apply text-blue-600 focus:ring-blue-600; }
+.radio-orange { @apply text-orange-600 focus:ring-orange-600; }
+.radio-teal { @apply text-teal-600 focus:ring-teal-600; }
+.radio-default { @apply text-gray-600 focus:ring-gray-600; }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+/* Badges */
+.badge {
+  @apply inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset;
+}
+
+.badge-default {
+  @apply bg-red-50 text-gray-600  ring-gray-300/20;
+}
+
+.badge-red {
+  @apply bg-purple-50 text-red-700  ring-red-600/20;
+}
+
+.badge-yellow {
+  @apply bg-yellow-50 text-yellow-700  ring-yellow-600/20;
+}
+
+.badge-green {
+  @apply bg-green-50 text-green-700  ring-green-600/20;
+}
+
+.badge-blue {
+  @apply bg-blue-50 text-blue-700  ring-blue-600/20;
+}
+
+.badge-orange {
+  @apply bg-orange-50 text-orange-700  ring-orange-600/20;
+}
+
+.badge-teal {
+  @apply bg-teal-50 text-teal-700  ring-teal-600/20;
+}
+
+/* PAGY */
+.pagy-nav,
+.pagy-nav-js {
+  @apply flex space-x-2;
+}
+
+.pagy-nav .page a,
+.pagy-nav .page.active,
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page a,
+.pagy-nav-js .page.active,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  @apply block px-3 py-1 text-sm text-gray-500 font-normal bg-gray-100 rounded-lg shadow-sm;
+  &:hover{
+    @apply bg-gray-300;
+  }
+  &:active{
+    @apply bg-gray-400 text-white;
   }
 }
 
-*/
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  @apply text-gray-400 cursor-default;
+  &:hover {
+    @apply text-gray-400 bg-gray-200;
+  }
+  &:active {
+    @apply text-gray-400 bg-gray-200;
+  }
+}
+
+.pagy-nav .page.active,
+.pagy-nav-js .page.active {
+  @apply text-white cursor-default bg-gray-400;
+  &:hover {
+    @apply text-white bg-gray-400;
+  }
+  &:active {
+    @apply bg-gray-400 text-white;
+  }
+}
+
+
+.pagy-combo-nav-js {
+  @apply flex max-w-max rounded-full px-3 py-1 text-sm text-gray-500 font-semibold bg-gray-200 shadow-md;
+}
+
+.pagy-combo-nav-js .pagy-combo-input {
+  @apply bg-white px-2 rounded-sm
+}
+
+.pagy-combo-nav-js .page.prev,
+.pagy-combo-nav-js .page.next {
+  &:hover {
+    @apply text-gray-800;
+  }
+  &:active {
+    @apply text-gray-800;
+  }
+}
+
+.pagy-combo-nav-js .page.prev.disabled,
+.pagy-combo-nav-js .page.next.disabled {
+  @apply text-gray-400 cursor-default;
+}

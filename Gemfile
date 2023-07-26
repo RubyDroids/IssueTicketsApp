@@ -16,7 +16,7 @@ gem "view_component"
 gem "font-awesome-sass", "~> 6.4.0"
 
 # Helpers
-# gem "pagy"
+gem "pagy"
 gem "rails-i18n"
 # gem "kramdown"
 gem "dotenv-rails"
