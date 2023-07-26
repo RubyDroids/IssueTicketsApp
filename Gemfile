@@ -19,10 +19,11 @@ gem "font-awesome-sass", "~> 6.4.0"
 # gem "pagy"
 gem "rails-i18n"
 # gem "kramdown"
+gem "dotenv-rails"
 
-# gem "bcrypt", "~> 3.1.7"
-# gem "devise"
-# gem "devise-i18n"
+gem "bcrypt", "~> 3.1.7"
+gem "devise"
+gem "devise-i18n"
 
 # APIs
 # gem "octokit"
