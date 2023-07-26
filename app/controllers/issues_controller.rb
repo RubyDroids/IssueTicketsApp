@@ -1,9 +1,15 @@
 class IssuesController < ApplicationController
+  before_action :authenticate_user!
+
+  before_action :set_project
   before_action :set_issue, only: %i[ show edit update destroy ]
 
   # GET /issues
   def index
-    @issues = Issue.all
+    # resources = @label.present? ? @project.issues.labeled_by(@label) : @project.issues.all
+    resources = @project.issues.all
+
+    @pagy, @issues = pagy(resources.order(created_at: :desc))
   end
 
   # GET /issues/1
@@ -24,7 +30,10 @@ class IssuesController < ApplicationController
     @issue = Issue.new(issue_params)
 
     if @issue.save
-      redirect_to @issue, notice: "Issue was successfully created."
+      respond_to do |format|
+        format.html { redirect_to issues_path, notice: "Issue was successfully created." }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,17 +51,23 @@ class IssuesController < ApplicationController
   # DELETE /issues/1
   def destroy
     @issue.destroy
-    redirect_to issues_url, notice: "Issue was successfully destroyed.", status: :see_other
+    redirect_to issues_path, notice: "Issue was successfully destroyed.", status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_issue
-      @issue = Issue.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def issue_params
-      params.require(:issue).permit(:title, :description, :reported_by, :project_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_issue
+    @issue = @project.issues.find(params[:id])
+  end
+
+  def set_project
+    @project = current_user.current_project
+  end
+
+  # Only allow a list of trusted parameters through.
+  def issue_params
+    params.require(:issue).permit(:title, :description, :reported_by, :project_id)
+    params.require(:issue).permit(:title, :description, :reported_by, :video_link, :project_id, :user_id, :label_id, images: [])
+  end
 end
