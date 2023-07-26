@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # belogns_to :project
+  # belongs_to :project
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

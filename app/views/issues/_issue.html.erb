@@ -1,0 +1,27 @@
+<div id="<%= dom_id issue %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= issue.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= issue.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Reported by:</strong>
+    <%= issue.reported_by %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Project:</strong>
+    <%= issue.project_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this issue", issue, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this issue', edit_issue_path(issue), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
