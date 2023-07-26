@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html lang="<%= I18n.locale %>">
+<html class="h-full bg-white">
   <head>
-    <title>IssueTicketsApp</title>
+    <meta name="charset" content="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= ENV.fetch("APP_NAME") %></title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="h-full">
+    <%#= render Layout::Navbar::Component.new unless !user_signed_in? %>
+    <main class="mt-10 container">
       <%= yield %>
     </main>
   </body>
