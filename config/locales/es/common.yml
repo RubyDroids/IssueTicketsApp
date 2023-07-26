@@ -1,0 +1,62 @@
+es:
+  common:
+    statuses:
+      active: Activo
+      inactive: Inactivo
+      undefined: No definido
+      pending: Pendiente
+      confirmed: Confirmado
+      finished: Finalizado
+    titles:
+      home: Home
+      user_profile: Mis datos
+    buttons:
+      new: "Nuevo %{name}"
+      add: "Agregar %{name}"
+      destroy: Eliminar %{name}
+    actions:
+      add: Agregar nuevo %{name}
+      new: Nuevo
+      edit: Modificar %{name}
+      cancel: Cancelar
+      destroy: Eliminar
+      finish: Finalizar
+      submit: Confirmar
+      create: Crear
+      update: Guardar
+      save: Guardar
+      destroy: Eliminar
+      upload: Subir
+      select: Seleccionar
+      show: Ver
+      open: Abrir
+      search: Buscar
+      search_word: Buscar...
+      view: Ver
+      back: Volver
+      back_to_main: Volver al principio
+      finish_without_submit: Finalizar sin guardar
+      close_panel: Cerrar panel
+    sr_only:
+      view_notifications: Ver notificaciones
+      user_menu: Abrir menu
+    flash:
+      error:
+        title: La acción no puede ser completada
+      success:
+        title: Perfecto!
+      alert:
+        title: Se require atención
+    crud:
+      created: 
+        success: "%{name} creado correctamente!"
+        error: "Error creando %{name}"
+      updated: 
+        success: "%{name} actualizado correctamente!"
+        error: "Error al actualizar %{name}"        
+      destroyed: 
+        success: "%{name} eliminado correctamente!"
+        scheduled: "%{name} ha sido programado para eliminación"
+        error: "Error al eliminar %{name}"
+      attachments:
+        deleted: "La imágen ha sido eliminada"

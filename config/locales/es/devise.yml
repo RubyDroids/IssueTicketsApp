@@ -1,0 +1,21 @@
+es:
+  devise:
+    titles:
+      sign_in: Ingresa en Issue Tickets
+      sign_up: Alta de cuenta
+      forgot_password: Contraseña nueva
+    links:
+      sign_up: abri una cuenta nueva
+      sign_in: ingresa en tu cuenta
+      sign_up_short: abri una nueva
+      sign_in_short: ingresa en tu cuenta      
+      forgot_password: Olvidaste contraseña?
+      end_session: Salir
+    buttons:
+      sign_in: Ingresa
+      sign_up: Registrarse
+      password_new: Enviar instrucciones
+    other:
+      or: "o"
+      if_you_have_one: si ya la tienes.
+      six_characters: 6 caracteres mínimo

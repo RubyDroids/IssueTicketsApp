@@ -1,0 +1,12 @@
+es:
+  views:
+    labels:
+      bug: Error
+      enhancement: Mejora
+      feature: Para Futuro
+      question: Pregunta
+      hotfix: Error critico
+      fieldset:
+        title: Tipo de Ticket
+        legend: Tipo de Ticket
+        description: "Selecciona una opción para identificar tu reporte:"

@@ -1,0 +1,34 @@
+es:
+  activerecord:
+    models:
+      issue: Ticket
+    attributes:
+      issue:
+        title: Título
+        description: Descripción
+        reported_by: Reportado por
+        created_at: Creado
+        updated_at: Actualizado
+        closed_at: Cerrado
+        label: Etiqueta
+        project: Proyecto
+        images: Imagenes
+        video_link: Link para Youtube o Loom
+    errors:
+      models:
+        issue:
+          one: Ticket
+          many: Tickets
+          attributes:
+            title: 
+              required: es un campo requerido
+              blank: no puede estar en blanco
+            description: 
+              required: es un campo requerido
+              blank: no puede estar en blanco
+              too_short: debe ser al menos 5 caracteres
+            reported_by:
+              required: es obligatorio
+              blank: es obligatorio
+
+              
