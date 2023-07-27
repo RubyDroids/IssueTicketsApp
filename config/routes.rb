@@ -1,9 +1,13 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
-  resources :labels
-  resources :issues
+  mount Sidekiq::Web => "/sidekiq"
+
   devise_for :users
   devise_for :admins
 
+  resources :labels, only: %i[index show]
+  resources :issues
   resources :projects
 
   # Defines the root path route ("/")
