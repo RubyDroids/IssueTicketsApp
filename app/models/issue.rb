@@ -10,20 +10,20 @@ class Issue < ApplicationRecord
 
   scope :labeled_by, ->(label) { where(label: label) }
 
-  # after_create :publish_issue_in_github!
+  after_create :publish_issue_in_github!
 
   def label_name
     label.name.downcase
   end
 
-  # def rendered_description
-  #   markdown = Redcarpet::Markdown.new(renderer, extensions).render(description)
-  #   markdown.render(description)
-  # end
+  def rendered_description
+    markdown = Redcarpet::Markdown.new(renderer, extensions).render(description)
+    markdown.render(description)
+  end
 
   private
 
   def publish_issue_in_github!
-    # Github::PublishIssueJob.set(wait: 10.seconds).perform_later(self)
+    Github::PublishIssueJob.set(wait: 10.seconds).perform_later(self)
   end
 end
