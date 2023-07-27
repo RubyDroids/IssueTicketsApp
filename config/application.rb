@@ -20,10 +20,10 @@ module IssueTicketsApp
     config.i18n.fallbacks = false
     config.time_zone = "Buenos Aires"
 
-    # config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :sidekiq
 
-    # config.after_initialize do |app|
-    #   app.routes.default_url_options = app.config.action_mailer.default_url_options
-    # end
+    config.after_initialize do |app|
+      app.routes.default_url_options = app.config.action_mailer.default_url_options
+    end
   end
 end

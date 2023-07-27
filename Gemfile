@@ -26,11 +26,11 @@ gem "devise"
 gem "devise-i18n"
 
 # APIs
-# gem "octokit"
+gem "octokit"
 
 # Background jobs
-# gem "sidekiq"
-# gem "sidekiq-scheduler"
+gem "sidekiq"
+gem "sidekiq-scheduler"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
@@ -48,9 +48,9 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
-# gem "mini_magick"
-# gem "aws-sdk-s3"
+gem "image_processing", "~> 1.2"
+gem "mini_magick"
+gem "aws-sdk-s3"
 
 group :production do
   # gem "lograge"

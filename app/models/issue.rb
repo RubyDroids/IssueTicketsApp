@@ -8,12 +8,12 @@ class Issue < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10 }
   validates :reported_by, presence: true
 
-  # scope :labeled_by, ->(label) { where(label: label) }
+  scope :labeled_by, ->(label) { where(label: label) }
 
   # after_create :publish_issue_in_github!
 
   def label_name
-    # label.name.downcase
+    label.name.downcase
   end
 
   # def rendered_description
