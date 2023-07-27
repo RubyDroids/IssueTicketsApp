@@ -18,7 +18,7 @@ gem "font-awesome-sass", "~> 6.4.0"
 # Helpers
 gem "pagy"
 gem "rails-i18n"
-# gem "kramdown"
+gem "kramdown"
 gem "dotenv-rails"
 
 gem "bcrypt", "~> 3.1.7"

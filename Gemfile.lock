@@ -145,6 +145,8 @@ GEM
     irb (1.7.4)
       reline (>= 0.3.6)
     jmespath (1.6.2)
+    kramdown (2.4.0)
+      rexml
     launchy (2.5.2)
       addressable (~> 2.8)
     letter_opener (1.8.1)
@@ -315,6 +317,7 @@ DEPENDENCIES
   foreman
   image_processing (~> 1.2)
   importmap-rails
+  kramdown
   letter_opener
   mini_magick
   octokit
