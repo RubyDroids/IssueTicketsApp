@@ -1,8 +1,7 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing issue</h1>
+<%= turbo_frame_tag "issue_form" do %>
+  <div class="mx-auto sm:w-1/2 w-full">
+    <%= tag.h1 I18n.t("common.actions.edit", name: Issue.model_name.human), class: "font-bold text-2xl mb-4" %>
 
-  <%= render "form", issue: @issue %>
-
-  <%= link_to "Show this issue", @issue, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to issues", issues_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+    <%= render "form", issue: @issue %>
+  </div>
+<% end %>

@@ -1,27 +1,31 @@
-<div id="<%= dom_id issue %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= issue.title %>
-  </p>
+<li id="<%= dom_id issue %>" class="relative flex gap-x-4  pt-5 mb-5">
+  <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
+    <div class="w-px bg-gray-200"></div>
+  </div>
+  <span class="relative mt-3  flex-none rounded-full">
+    <%= render Layout::LabelIcon::Component.new(label: issue.label_name) %>
+  </span>  
+  <div class="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
+    <div class="flex justify-between gap-x-4">
+      <div class="py-0.5 text-xs leading-5 text-gray-500">
+        <span class="font-medium text-gray-900"><%= issue.reported_by.titleize %></span> ha reportado:
+      </div>
+      <%= tag.time time_ago_in_words(issue.created_at), datetime: issue.created_at, class: "flex-none py-0.5 text-xs leading-5 text-gray-500" %>
+    </div>
+    <p class="text-sm font-medium leading-6 text-gray-800 mt-2">
+      <%= issue.title %>
+      <%= badge(issue.label_name) %>
+    </p>
+    
+    <%= tag.p issue.description.truncate(300), class: "text-sm leading-6 text-gray-500 mt-2" %>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= issue.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Reported by:</strong>
-    <%= issue.reported_by %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Project:</strong>
-    <%= issue.project_id %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this issue", issue, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this issue', edit_issue_path(issue), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+    <p class="text-right">
+      <%= link_to issue_path(issue), class: "text-amber-600" do %>
+        <%= icon("fa-solid", "eye") %>
+      <% end %>
+      <%#= link_to edit_issue_path(issue), data: { "turbo-frame": "issiue_form" }, class: "text-amber-600" do %>
+        <%#= icon("fa-solid", "pencil") %>
+      <%# end %>
+    </p>
+  </div>
+</li>

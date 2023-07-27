@@ -1,14 +1,14 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<%= turbo_frame_tag "issue_form" %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Issues</h1>
-    <%= link_to 'New issue', new_issue_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
+<div class="mx-auto mt-6 sm:w-3/4 w-full border-t border-gray-100">
+  <ul role="list" class="mx-auto md:w-3/4 w-full space-y-6">
+    <%= turbo_frame_tag "issues" do %>
+      <%= render @issues %>
+    <% end %>
+  </ul>
 
-  <div id="issues" class="min-w-full">
-    <%= render @issues %>
+  <div class="flex mt-12 items-center justify-center space-x-4 w-full pb-10">
+    <%== pagy_nav(@pagy) %>
   </div>
+  <p class="text-center mt-8 text-gray-500"><%#== pagy_info @pagy %></p>  
 </div>
