@@ -1,6 +1,6 @@
 class Issue < ApplicationRecord
   belongs_to :project
-  # belongs_to :label
+  belongs_to :label
 
   has_many_attached :images
 
@@ -24,6 +24,6 @@ class Issue < ApplicationRecord
   private
 
   def publish_issue_in_github!
-    Github::PublishIssueJob.set(wait: 10.seconds).perform_later(self)
+    # Github::PublishIssueJob.set(wait: 10.seconds).perform_later(self)
   end
 end
