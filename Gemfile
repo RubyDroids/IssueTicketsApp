@@ -20,6 +20,7 @@ gem "pagy"
 gem "rails-i18n"
 gem "kramdown"
 gem "dotenv-rails"
+gem "faraday-retry"
 
 gem "bcrypt", "~> 3.1.7"
 gem "devise"
