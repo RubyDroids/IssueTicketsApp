@@ -8,6 +8,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :trackable
 
   def current_project
-    projects.first
+    project
   end
 end

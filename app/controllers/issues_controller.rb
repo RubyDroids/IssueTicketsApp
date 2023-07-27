@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user_or_admin!
 
   before_action :set_project
   before_action :set_issue, only: %i[ show edit update destroy ]
@@ -62,12 +62,31 @@ class IssuesController < ApplicationController
   end
 
   def set_project
-    @project = current_user.current_project
+    @project= if user_signed_in?
+                current_user.current_project
+              elsif admin_signed_in?
+                current_admin.current_project
+              else
+                redirect_to root_path, alert: "Missing project assigned to your account"
+              end
   end
 
   # Only allow a list of trusted parameters through.
   def issue_params
     params.require(:issue).permit(:title, :description, :reported_by, :project_id)
     params.require(:issue).permit(:title, :description, :reported_by, :video_link, :project_id, :user_id, :label_id, images: [])
+  end
+
+  def authenticate_user_or_admin!
+    if user_signed_in?
+      # If a regular user is signed in, allow access
+      authenticate_user!
+    elsif admin_signed_in?
+      # If an admin is signed in, allow access
+      authenticate_admin!
+    else
+      # Redirect to the appropriate path if no user or admin is signed in
+      redirect_to new_user_session_path, alert: 'Please sign in.'
+    end
   end
 end

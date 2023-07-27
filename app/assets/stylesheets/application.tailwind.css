@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+
+
 /* Radio inputs colors */
 .radio-red { @apply text-red-600 focus:ring-red-600; }
 .radio-green { @apply text-green-600 focus:ring-green-600; }

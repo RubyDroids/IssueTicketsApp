@@ -7,6 +7,7 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -14,7 +15,7 @@
   </head>
 
   <body class="h-full">
-    <%#= render Layout::Navbar::Component.new unless !user_signed_in? %>
+    <%= render Layout::Navbar::Component.new unless !user_signed_in? %>
     <main class="mt-10 container">
       <%= yield %>
     </main>
