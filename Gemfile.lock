@@ -316,7 +316,6 @@ DEPENDENCIES
   rails (~> 7.0.6)
   rails-i18n
   redis (~> 4.0)
-  ruby-vips
   selenium-webdriver
   sprockets-rails
   stimulus-rails
