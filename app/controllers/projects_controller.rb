@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = current_admin.projects.new
+    @project = Project.new
   end
 
   # GET /projects/1/edit
@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    @project = current_admin.projects.new(project_params)
+    @project = Project.new(project_params)
 
     if @project.save
       redirect_to @project, notice: "Project was successfully created."
@@ -53,6 +53,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :website_url, :admin_id)
+      params.require(:project).permit(:name, :website_url)
     end
 end
