@@ -30,8 +30,8 @@ gem "devise-i18n"
 gem "octokit"
 
 # Background jobs
-gem "sidekiq"
-gem "sidekiq-scheduler"
+# gem "sidekiq"
+# gem "sidekiq-scheduler"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
