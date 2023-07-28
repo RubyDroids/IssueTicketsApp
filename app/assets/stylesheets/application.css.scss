@@ -13,9 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ @import 'actiontext.css';
  @import "font-awesome";
 
-  label, a, button, .btn {
+label, a, button, .btn {
    cursor: pointer;
  }
-@import 'actiontext.css';

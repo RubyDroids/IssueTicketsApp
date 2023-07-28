@@ -1,12 +1,13 @@
 class IssuesController < ApplicationController
-  before_action :authenticate_user_or_admin!
+  # before_action :authenticate_user_or_admin!
+  before_action :authenticate_user!
 
   before_action :set_project
   before_action :set_issue, only: %i[ show edit update destroy ]
 
   # GET /issues
   def index
-    # resources = @label.present? ? @project.issues.labeled_by(@label) : @project.issues.all
+    resources = @label.present? ? @project.issues.labeled_by(@label) : @project.issues.all
     resources = @project.issues.all
 
     @pagy, @issues = pagy(resources.order(created_at: :desc))
@@ -18,7 +19,7 @@ class IssuesController < ApplicationController
 
   # GET /issues/new
   def new
-    @issue = Issue.new
+    @issue = @project.issues.new
   end
 
   # GET /issues/1/edit
@@ -27,7 +28,7 @@ class IssuesController < ApplicationController
 
   # POST /issues
   def create
-    @issue = Issue.new(issue_params)
+    @issue = @project.issues.new(issue_params)
 
     if @issue.save
       respond_to do |format|
@@ -77,16 +78,16 @@ class IssuesController < ApplicationController
     params.require(:issue).permit(:title, :description, :reported_by, :video_link, :project_id, :user_id, :label_id, images: [])
   end
 
-  def authenticate_user_or_admin!
-    if user_signed_in?
-      # If a regular user is signed in, allow access
-      authenticate_user!
-    elsif admin_signed_in?
-      # If an admin is signed in, allow access
-      authenticate_admin!
-    else
-      # Redirect to the appropriate path if no user or admin is signed in
-      redirect_to new_user_session_path, alert: 'Please sign in.'
-    end
-  end
+  # def authenticate_user_or_admin!
+  #   if user_signed_in?
+  #     # If a regular user is signed in, allow access
+  #     authenticate_user!
+  #   elsif admin_signed_in?
+  #     # If an admin is signed in, allow access
+  #     authenticate_admin!
+  #   else
+  #     # Redirect to the appropriate path if no user or admin is signed in
+  #     redirect_to root_path, alert: "You must be signed in to access this page"
+  #   end
+  # end
 end
