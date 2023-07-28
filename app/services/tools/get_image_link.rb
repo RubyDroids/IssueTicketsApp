@@ -22,15 +22,14 @@ module Tools
 
     def call
       preview_url = service.url(
-        image.key,
+        image.blob.key,
         expires_in: 1.day,
         filename: image.filename,
         disposition: "inline",
         content_type: image.content_type,
       )
 
-      # preview_url.split("?").try(:first)
-      preview_url
+      preview_url.split("?").try(:first)
     end
   end
 end
