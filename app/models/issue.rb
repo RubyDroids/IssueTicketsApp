@@ -24,6 +24,6 @@ class Issue < ApplicationRecord
   private
 
   def publish_issue_in_github!
-    Github::PublishIssueJob.set(wait: 10.seconds).perform_later(self)
+    Github::PublishIssueJob.perform_later(self)
   end
 end
