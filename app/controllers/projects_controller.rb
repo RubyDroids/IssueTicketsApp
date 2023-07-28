@@ -1,6 +1,4 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_admin!
-
   before_action :set_project, only: %i[ show edit update destroy ]
 
   # GET /projects
