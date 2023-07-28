@@ -11,12 +11,12 @@ module Github
       @issue  = issue
       @project = issue.project
       @client = Octokit::Client.new(access_token: @project.github_api_key)
-      @repo   = @project.github_repo_url
+      @repo   = @project.github_repository_url
     end
 
     def call
       title = issue.title
-      boyd  = "Reportado por #{issue.reported_by} \n\n"
+      body  = "*Reportado por #{issue.reported_by}* \n\n"
       body  += issue.description
 
       if issue.video_link.present?
@@ -36,7 +36,7 @@ module Github
         body += "\n\n" + image_urls
       end
 
-      boyd  += "\n\n ======================================== \n Reportado por #{issue.reported_by}"
+      body  += "\n\n ======================================== \n *Reportado por #{issue.reported_by}*"
 
       # Publish Issue in Github
       client.create_issue(repo, title, body, labels: [issue.label_name.to_s])

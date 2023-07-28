@@ -53,6 +53,9 @@ gem "image_processing", "~> 1.2"
 gem "mini_magick"
 gem "aws-sdk-s3"
 
+# Monitoring and debug Tools
+gem "amazing_print"
+
 group :production do
   # gem "lograge"
 end

@@ -29,7 +29,8 @@ module Tools
         content_type: image.content_type,
       )
 
-      preview_url.split("?").try(:first)
+      # preview_url.split("?").try(:first)
+      preview_url
     end
   end
 end
