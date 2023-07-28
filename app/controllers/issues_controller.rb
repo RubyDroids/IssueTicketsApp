@@ -4,8 +4,12 @@ class IssuesController < ApplicationController
 
   # GET /issues
   def index
-    resources = @label.present? ? @project.issues.labeled_by(@label) : @project.issues.all
-    resources = @project.issues.all
+    if current_user.admin?
+      resources = Issue.all
+    else
+      resources = @label.present? ? @project.issues.labeled_by(@label) : @project.issues.all
+      resources = @project.issues.all
+    end
 
     @pagy, @issues = pagy(resources.order(created_at: :desc))
   end
@@ -60,13 +64,7 @@ class IssuesController < ApplicationController
   end
 
   def set_project
-    @project= if user_signed_in?
-                current_user.current_project
-              elsif admin_signed_in?
-                current_admin.current_project
-              else
-                redirect_to root_path, alert: "Missing project assigned to your account"
-              end
+    @project = current_user.project
   end
 
   # Only allow a list of trusted parameters through.

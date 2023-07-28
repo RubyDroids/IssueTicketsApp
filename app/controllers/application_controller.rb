@@ -1,19 +1,19 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_request_details
-  before_action :authenticate
+  include Pagy::Backend
+
+  add_flash_types :info, :error, :success, :warning
+  layout :layout_by_resource
+
+  before_action :authenticate_user!
 
   private
 
-  def authenticate
-    if session_record = Session.find_by_id(cookies.signed[:session_token])
-      Current.session = session_record
+  def layout_by_resource
+    case params['controller']
+    when 'devise/sessions', 'devise/registrations', 'devise/passwords'
+      'devise'
     else
-      redirect_to sign_in_path
+      'application'
     end
-  end
-
-  def set_current_request_details
-    Current.user_agent = request.user_agent
-    Current.ip_address = request.ip
   end
 end
