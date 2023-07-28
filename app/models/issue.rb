@@ -24,6 +24,7 @@ class Issue < ApplicationRecord
   private
 
   def publish_issue_in_github!
-    Github::PublishIssueJob.perform_later(self)
+    # Github::PublishIssueJob.perform_later(self)
+    Github::PublishIssue.new(issue).call
   end
 end
