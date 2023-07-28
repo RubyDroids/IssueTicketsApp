@@ -1,4 +1,4 @@
-Admin.create(email: "bondarolik@icloud.com", password: "12345678", password_confirmation: "12345678")
+User.create(email: "bondarolik@icloud.com", password: "issuepp2024!", password_confirmation: "issuepp2024", admin: true)
 
 # Prepare labels
 Label.destroy_all
