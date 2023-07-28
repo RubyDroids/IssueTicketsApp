@@ -23,8 +23,8 @@ gem "dotenv-rails"
 gem "faraday-retry"
 
 gem "bcrypt", "~> 3.1.7"
-# gem "devise"
-# gem "devise-i18n"
+gem "devise"
+gem "devise-i18n"
 
 # APIs
 gem "octokit"
