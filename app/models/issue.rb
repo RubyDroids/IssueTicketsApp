@@ -8,9 +8,10 @@ class Issue < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10 }
   validates :reported_by, presence: true
 
-  scope :labeled_by, ->(label) { where(label:) }
+  scope :labeled_by, ->(label) { label.present? ? where(label:) : all }
   scope :pending, -> { where(completed: false) }
-  scope :finished, -> { where(completed: true) }
+  scope :resolved, -> { where(completed: true) }
+  scope :resolved_if, ->(resolved) { resolved || pending }
 
   after_create :publish_issue_in_github!
 

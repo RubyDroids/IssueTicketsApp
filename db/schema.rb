@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_130820) do
     t.datetime "updated_at", null: false
     t.string "video_link"
     t.bigint "label_id"
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.index ["label_id"], name: "index_issues_on_label_id"
     t.index ["project_id"], name: "index_issues_on_project_id"
   end
