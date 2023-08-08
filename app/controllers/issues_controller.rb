@@ -44,7 +44,10 @@ class IssuesController < ApplicationController
   # PATCH/PUT /issues/1
   def update
     if @issue.update(issue_params)
-      redirect_to @issue, notice: "Issue was successfully updated."
+      respond_to do |format|
+        format.html { redirect_to issues_path, notice: "Issue was successfully updated." }
+        format.turbo_stream
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -58,6 +61,8 @@ class IssuesController < ApplicationController
 
   def toggle_status
     @issue.toggle_status!
+
+    respond_to(&:turbo_stream)
   end
 
   private
