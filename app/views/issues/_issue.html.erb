@@ -24,7 +24,7 @@
                     url: toggle_status_issue_path(issue), 
                     html: { 
                       method: :put, 
-                      class: "text-right",
+                      class: "text-right mt-3",
                       data: {
                         turbo_stream: true
                       }
@@ -34,11 +34,11 @@
         <%= form.hidden_field :completed %>
         <input autocomplete="off" type="hidden" value="<%= issue.id %>" name="id" id="id">
 
-        <%= button_tag type: "submit", class: "text-green-600" do %>
+        <%= button_tag type: "submit", class: "#{!issue.completed? ? 'text-green-600' : 'text-red-600'}" do %>
           <span class="text-sm">
-            Marcar como <%= issue.completed? ? "cerrado" : "abierto" %>
+            Marcar como <%= !issue.completed? ? "cerrado" : "abierto" %>
           </span>
-          <%= icon("fa-solid", "circle-check") %>          
+          <%= icon("fa-solid", "circle-check", class: "") %>          
         <% end %>
       <% end %>
     <% end %>

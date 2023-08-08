@@ -11,7 +11,7 @@ class Issue < ApplicationRecord
   scope :labeled_by, ->(label) { label.present? ? where(label:) : all }
   scope :pending, -> { where(completed: false) }
   scope :resolved, -> { where(completed: true) }
-  scope :resolved_if, ->(resolved) { resolved || pending }
+  scope :resolved_if, ->(resolved_param) { resolved_param ? resolved : pending }
 
   after_create :publish_issue_in_github!
 
@@ -26,6 +26,10 @@ class Issue < ApplicationRecord
 
   def toggle_status!
     update(completed: !completed)
+  end
+
+  def current_status
+    completed
   end
 
   private

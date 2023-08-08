@@ -14,6 +14,7 @@ es:
       new: "Nuevo %{name}"
       add: "Agregar %{name}"
       destroy: Eliminar %{name}
+      view_completed: "Ver completados"
     actions:
       add: Agregar nuevo %{name}
       new: Nuevo
