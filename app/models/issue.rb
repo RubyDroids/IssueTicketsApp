@@ -8,7 +8,9 @@ class Issue < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10 }
   validates :reported_by, presence: true
 
-  scope :labeled_by, ->(label) { where(label: label) }
+  scope :labeled_by, ->(label) { where(label:) }
+  scope :pending, -> { where(completed: false) }
+  scope :finished, -> { where(completed: true) }
 
   after_create :publish_issue_in_github!
 
@@ -19,6 +21,10 @@ class Issue < ApplicationRecord
   def rendered_description
     markdown = Redcarpet::Markdown.new(renderer, extensions).render(description)
     markdown.render(description)
+  end
+
+  def toggle_status!
+    update(completed: !completed)
   end
 
   private

@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
   before_action :set_project
-  before_action :set_issue, only: %i[ show edit update destroy ]
+  before_action :set_issue, only: %i[ show edit update destroy toggle_status ]
 
   # GET /issues
   def index
@@ -54,6 +54,10 @@ class IssuesController < ApplicationController
   def destroy
     @issue.destroy
     redirect_to issues_path, notice: "Issue was successfully destroyed.", status: :see_other
+  end
+
+  def toggle_status
+    @issue.toggle_status!
   end
 
   private
