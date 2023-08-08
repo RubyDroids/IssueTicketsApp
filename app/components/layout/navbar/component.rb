@@ -8,7 +8,7 @@ module Layout
       include ApplicationHelper
 
       def labels
-        Label.pluck(:name, :id).map { |name, id| { name: name.capitalize, id: id } }
+        Label.pluck(:name, :id).map { |name, id| { name: I18n.t("views.labels.#{name}"), id: } }
       end
     end
   end
