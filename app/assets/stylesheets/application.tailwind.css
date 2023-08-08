@@ -12,6 +12,9 @@
 
 */
 
+.completed {
+  @apply line-through text-green-400 text-green-900 hover:border-green-500 ;
+}
 
 /* Radio inputs colors */
 .radio-red { @apply text-red-600 focus:ring-red-600; }

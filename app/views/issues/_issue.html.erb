@@ -19,13 +19,34 @@
     
     <%= tag.p issue.description.truncate(300), class: "text-sm leading-6 text-gray-500 mt-2" %>
 
-    <p class="text-right">
-      <%= link_to issue_path(issue), class: "text-amber-600" do %>
+    <%= turbo_frame_tag "#{dom_id(issue)}_toggle" do %>
+      <%= form_with(model: issue, 
+                    url: toggle_status_issue_path(issue), 
+                    html: { 
+                      method: :put, 
+                      class: "text-right mt-3",
+                      data: {
+                        turbo_stream: true
+                      }
+                    }) do |form| %>
+        <%= form.hidden_field :project_id, value: current_user.project.id %>
+        <%= form.hidden_field :id %>
+        <%= form.hidden_field :completed %>
+        <input autocomplete="off" type="hidden" value="<%= issue.id %>" name="id" id="id">
+
+        <%= button_tag type: "submit", class: "#{!issue.completed? ? 'text-green-600' : 'text-red-600'}" do %>
+          <span class="text-sm">
+            Marcar como <%= !issue.completed? ? "cerrado" : "abierto" %>
+          </span>
+          <%= icon("fa-solid", "circle-check", class: "") %>          
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <p class="text-right mt-2">
+      <%= link_to issue_path(issue), title: "Ver Ticket", class: "text-amber-600" do %>
         <%= icon("fa-solid", "eye") %>
       <% end %>
-      <%#= link_to edit_issue_path(issue), data: { "turbo-frame": "issiue_form" }, class: "text-amber-600" do %>
-        <%#= icon("fa-solid", "pencil") %>
-      <%# end %>
     </p>
   </div>
 </li>

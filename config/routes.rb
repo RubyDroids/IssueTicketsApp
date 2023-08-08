@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   # Resources
   resources :labels, only: %i[index show]
-  resources :issues
+
+  resources :issues do
+    put :toggle_status, on: :member
+  end
+
   resources :projects
 
   # Main path
