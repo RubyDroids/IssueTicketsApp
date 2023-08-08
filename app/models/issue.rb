@@ -5,7 +5,7 @@ class Issue < ApplicationRecord
   has_many_attached :images
 
   validates :title, presence: true
-  validates :description, presence: true, length: { minimum: 10 }
+  # validates :description, presence: true, length: { minimum: 10 }
   validates :reported_by, presence: true
 
   scope :labeled_by, ->(label) { label.present? ? where(label:) : all }

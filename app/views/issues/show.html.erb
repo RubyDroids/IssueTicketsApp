@@ -43,7 +43,31 @@
             <% end %>
           <% end %>
         </ul>
-      <% end %>         
+      <% end %>       
+
+      <%= turbo_frame_tag "#{dom_id(@issue)}_toggle" do %>
+        <%= form_with(model: @issue, 
+                      url: toggle_status_issue_path(@issue), 
+                      html: { 
+                        method: :put, 
+                        class: "text-right mt-3",
+                        data: {
+                          turbo_stream: true
+                        }
+                      }) do |form| %>
+          <%= form.hidden_field :project_id, value: current_user.project.id %>
+          <%= form.hidden_field :id %>
+          <%= form.hidden_field :completed %>
+          <input autocomplete="off" type="hidden" value="<%= @issue.id %>" name="id" id="id">
+
+          <%= button_tag type: "submit", class: "#{!@issue.completed? ? 'text-green-600' : 'text-red-600'}" do %>
+            <span class="text-sm">
+              Marcar como <%= !@issue.completed? ? "cerrado" : "abierto" %>
+            </span>
+            <%= icon("fa-solid", "circle-check", class: "") %>          
+          <% end %>
+        <% end %>
+      <% end %>        
 
       <p class="text-right mt-3">
         <%= link_to issues_path, class: "text-dark-600" do %>
